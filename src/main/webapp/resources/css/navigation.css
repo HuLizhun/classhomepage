@@ -1,0 +1,12 @@
+.navigation{
+	position:absolute;
+	width:120px;
+	left:0;
+	border-right:5px solid white;
+	border-bottom:5px solid white;
+	top:330px;
+	height:538px;
+	background:#4169E1;
+	line-height:9em;
+	
+}

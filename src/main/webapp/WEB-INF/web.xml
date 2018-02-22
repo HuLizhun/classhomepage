@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" 
+	xmlns="http://java.sun.com/xml/ns/javaee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+  <display-name>textile083</display-name>
+  <welcome-file-list>
+    <welcome-file>welcome.jsp</welcome-file>
+  </welcome-file-list>
+  <!-- Spring应用上下文， 理解层次化的ApplicationContext -->
+  <context-param>
+ 		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/configs/spring/applicationContext.xml</param-value>
+  </context-param>
+  
+  <listener>
+		<listener-class>
+			org.springframework.web.context.ContextLoaderListener
+		</listener-class>
+  </listener>
+  
+  <!-- 拦截器好像没起作用 -->
+<!--   <filter>
+      <filter-name>encoding</filter-name>
+      <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+      <init-param>
+          <param-name>encoding</param-name>
+          <param-value>utf8</param-value>
+      </init-param>
+  </filter>
+  <filter-mapping>
+      <filter-name>encoding</filter-name>
+      <url-pattern>*</url-pattern>
+  </filter-mapping> -->
+  
+  <!-- DispatcherServlet,spring MVC的核心 -->
+  <servlet>
+      <servlet-name>springmvc</servlet-name>
+      <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+      <!-- DispatcherServlet对应的上下文配置，默认为/WEB-INF/$servlet-name$-servlet.xml -->
+      <init-param>
+          <param-name>contextConfigLocation</param-name>
+          <param-value>/WEB-INF/configs/spring/springmvc-servlet.xml</param-value>
+      </init-param>
+      <!-- 这个配置文件在容器启动的时候就加载 -->
+      <load-on-startup>1</load-on-startup>      
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>springmvc</servlet-name>
+      <!-- springmvc拦截所有的请求 -->
+      <url-pattern>/</url-pattern>
+  </servlet-mapping>
+</web-app>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- dao层的接口 -->
+<mapper namespace="com.textile083.dao.StudentDAO">
+	<!-- 映射类 -->
+	<resultMap type="com.textile083.entity.Student" id="StudentResult">
+		<!-- id表示主键，column为列名忽略大小写，property为属性名 -->
+		<id column="student_id" jdbcType="INTEGER" property="id" />
+		<!-- result表示普通列 -->
+		<result column="student_number" jdbcType="VARCHAR" property="number" />
+		<result column="student_sex" jdbcType="VARCHAR" property="sex" />
+		<result column="student_name" jdbcType="VARCHAR" property="name" />
+	</resultMap>
+	<!-- 配置select语句，id="queryStudentList"与IStudent的方法名一致，resultMap="StudentResult"与上面的映射类的id一致，parameterType为方法返回值类型 -->
+	<select id="queryAllStudentList" resultMap="StudentResult">
+		select student_id, student_number, student_sex, student_name from STUDENTS
+	</select>
+
+</mapper>

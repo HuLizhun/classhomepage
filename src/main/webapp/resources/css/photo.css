@@ -1,0 +1,12 @@
+.photo{
+	position:absolute;
+	top:450px;
+	left:120px;
+	border:5px solid white;
+	width:270px;
+	height:382px;
+	padding:15px;
+	padding-left:20px;
+	padding-right:10px;
+	line-height:12px;
+}

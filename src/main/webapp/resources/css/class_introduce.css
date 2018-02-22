@@ -1,0 +1,11 @@
+.class_introduce{
+	position: absolute;
+	top: 325px;
+	left: 120px;	
+	padding:20px;
+	width: 1175px;
+	height: 498px;
+	line-height: 1.5em;
+	overflow:auto;
+	border:5px solid white;
+}

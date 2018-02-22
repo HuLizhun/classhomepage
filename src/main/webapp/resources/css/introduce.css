@@ -1,0 +1,12 @@
+.introduce{
+	position:absolute;
+	top:325px;
+	left:925px;
+	border-top:5px solid white;
+	border-bottom:5px solid white;
+	border-left:5px solid white;
+	width:395px;
+	height:517px;
+	line-height:1.6em;
+	padding:10px;
+}
