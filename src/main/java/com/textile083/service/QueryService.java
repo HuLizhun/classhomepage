@@ -100,4 +100,20 @@ public class QueryService {
 		parameter.put("articleList", articleList);
 		return parameter;
 	}
+	
+	/**
+	 * 判断字符串是否有换行，如果有则在后面添加<br>
+	 * @param content
+	 */
+	public StringBuilder findNextLine(String content){
+		StringBuilder sb=new StringBuilder();
+		//如果输入的内容有换行，则在后面添加<br>
+		for(int i=0;i<content.length();i++){
+			sb.append(content.substring(i, i+1));
+			if("\n".equals(content.substring(i, i+1))){
+				sb.append("<br>");
+			}
+		}
+		return sb;
+	}
 }

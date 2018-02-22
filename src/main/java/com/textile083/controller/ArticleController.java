@@ -1,5 +1,6 @@
 package com.textile083.controller;
 
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
 import java.util.Map;
@@ -22,17 +23,19 @@ public class ArticleController {
 	private QueryService queryService;
 
 	@RequestMapping("/write.action")
-	public String queryAirticleByTitle(HttpServletRequest request) throws UnsupportedEncodingException {
+	public String queryAirticleByTitle(HttpServletRequest request) throws IOException {
 		request.setCharacterEncoding("utf-8");
 		String title = request.getParameter("subject");
 		String content = request.getParameter("content");
+		//判断content中字符有换行符，如果有添加<br>
+		StringBuilder sb=queryService.findNextLine(content);
 		Student student = (Student) request.getSession().getAttribute("student");
 		String number = student.getNumber();
 		String name = student.getName();
 		Article article = new Article();
 		article.setNumber(number);
 		article.setName(name);
-		article.setContent(content);
+		article.setContent(sb.toString());
 		article.setTitle(title);
 		queryService.addArticle(article);
 		request.getSession().setAttribute("article", article);

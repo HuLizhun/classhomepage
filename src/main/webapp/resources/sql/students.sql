@@ -1,4 +1,3 @@
-set char set 'gbk';
 drop table if exists students;
 create table students(
   student_id int auto_increment primary key,
