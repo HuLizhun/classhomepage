@@ -13,6 +13,10 @@ import com.textile083.entity.Article;
 import com.textile083.service.QueryService;
 import com.textile083.service.SearchService;
 
+/**
+ * 查询操作相关的控制器
+ *
+ */
 @Controller
 @RequestMapping("/Textile083")
 public class QueryController {
@@ -26,6 +30,7 @@ public class QueryController {
 	public String queryAirticleByTitle(HttpServletRequest request) throws UnsupportedEncodingException {
 		request.setCharacterEncoding("UTF-8");
 		String title = request.getParameter("title");
+		//根据标题查找文章
 		Article article = queryService.queryArticleByTitle(title);
 		request.getSession().setAttribute("article", article);
 		return "article";
@@ -36,6 +41,7 @@ public class QueryController {
 		request.setCharacterEncoding("UTF-8");
 		String exit = request.getParameter("exit");
 		String context = request.getParameter("context");
+		//如果用户点击退出按钮，返回登陆页面
 		if (searchService.doExit(exit)) {
 			request.getSession().setAttribute("student", null);
 			return "login";
@@ -57,6 +63,7 @@ public class QueryController {
 		String num = request.getParameter("num");
 		if (name != null && "photo".equals(name)) {
 			if (num == null || "".equals(num)) {
+				//默认打开第一张照片
 				request.getSession().setAttribute("num", 21);
 			} else {
 				request.getSession().setAttribute("num", num);

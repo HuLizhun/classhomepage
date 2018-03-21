@@ -45,7 +45,7 @@ window.onload = function(){
 <body> 
 	<!--主页开始  -->
 	<div class="homepage">
-		<img src="<%=path %>/resources/images/background2.jpg" height="99%" width="100%" />
+		<img src="<%=path %>/resources/images/background2.jpg" height="98%" width="100%" />
 		<!-- head图片开始 -->
 		<div class="head">
 			<img src="<%=path %>/resources/images/logo.gif" width="100%" /><br><br>			

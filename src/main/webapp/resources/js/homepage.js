@@ -3,11 +3,11 @@
  * @returns
  */
 function getHead() {
-    $(".head").html('<a href="/Textile083/login.action"><img src="/resources/images/logo.gif" width="100%" /> </a>\n\
+    $(".head").html('<a href="/Textile083/login.action"><img src="/resources/images/logo.gif" width="100%" height="100%" /> </a>\n\
     		<span style="position: absolute; top: 20px; left: 450px;color:white;font-size:43px;font-family:Microsoft YaHei;">天津工业大学纺织083</span>\n\
-    		<a href="http://www.tjpu.edu.cn/" target="_blank" style="position: absolute; top: 300px; left: 1150px;color:white;font-size:18px;">工大主页</a>\n\
-    		<span style="position: absolute; top: 300px; left: 1235px;color:white;font-size:18px;">|</span>\n\
-    		<a href="/Textile083/skip.action?name=contact" target="_blank" style="position: absolute; top: 300px; left: 1250px;color:white;font-size:18px;">联系我们</a>');
+    		<a href="http://www.tjpu.edu.cn/" target="_blank" style="position: absolute; top: 290px; left: 85.8%;color:white;font-size:18px;">工大主页</a>\n\
+    		<span style="position: absolute; top: 290px; left: 92.2%;color:white;font-size:18px;">|</span>\n\
+    		<a href="/Textile083/skip.action?name=contact" target="_blank" style="position: absolute; top: 290px; left: 93.3%;color:white;font-size:18px;">联系我们</a>');
 }
 
 /**

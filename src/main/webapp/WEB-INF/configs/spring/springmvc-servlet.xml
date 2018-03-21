@@ -25,6 +25,13 @@
 	   
 	</mvc:interceptors> -->
 	
+	<!-- 登陆拦截器 -->
+	<mvc:interceptors>
+	   <mvc:interceptor>
+	       <mvc:mapping path="/Textile083/*.action"/>
+	       <bean class="com.textile083.interceptor.LoginInterceptor"></bean>
+	   </mvc:interceptor>
+	</mvc:interceptors>
 	
 	<!-- DispatcherServlet上下文， 只管理@Controller类型的bean， 忽略其他型的bean, 如@Service -->
 	<context:component-scan base-package="com.textile083.controller">

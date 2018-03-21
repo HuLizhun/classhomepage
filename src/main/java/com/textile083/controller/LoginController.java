@@ -15,6 +15,10 @@ import com.textile083.entity.Article;
 import com.textile083.entity.Student;
 import com.textile083.service.LoginService;
 
+/**
+ * 登陆相关操作的控制器
+ *
+ */
 @Controller
 @RequestMapping("/Textile083")
 public class LoginController {
@@ -25,6 +29,7 @@ public class LoginController {
 	@RequestMapping("/doLogin.action")
 	public String doLogin(HttpServletRequest request) throws UnsupportedEncodingException {
 		request.setCharacterEncoding("utf-8");
+		//获取Cookies中的姓名和学号缓存
 		String[] str = loginService.doLogin(request.getCookies());
 		request.getSession().setAttribute("name", str[0]);
 		request.getSession().setAttribute("number", str[1]);

@@ -1,5 +1,5 @@
 <%@ page language="java" import="java.util.*" contentType="text/html; charset=utf-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -67,10 +67,10 @@ window.onload = function(){
 </script>
 </head>
 
-<body style="overflow-y:visible;overflow-x:hidden">
+<body>
 	<!--主页开始  -->
 	<div class="homepage">
-		<img src="<%=path %>/resources/images/background2.jpg" height="99%" width="100%" />
+		<img src="<%=path %>/resources/images/background2.jpg" height="98%" width="100%" />
 		<!-- head图片开始 -->
 		<div class="head">
 		</div>
@@ -79,7 +79,7 @@ window.onload = function(){
 		<span style="position: absolute; top: 10px; left:20px;color:white;font-size:18px;font-family:Microsoft YaHei;">欢迎${student.name}同学！</span>
 		</div> 
 		<!-- 搜索标签开始 -->
-		<div class="search" style="left: 1080px;">
+		<div class="search" style="left: 80.5%;">
 		</div>
 		<!-- 搜索标签结束 -->
 
