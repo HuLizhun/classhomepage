@@ -45,4 +45,6 @@ public interface ArticleDAO {
 	 * @return
 	 */
 	public List<Article> queryArticleByNumber(String number);
+	
+	public void deleteArticleById(int id);
 }

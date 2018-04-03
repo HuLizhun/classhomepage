@@ -61,7 +61,7 @@ window.onload = function(){
 		<div class="head">
 		</div>
 		<div class="welcome">
-		<span style="position: absolute; top: 10px; left:20px;color:white;font-size:18px;font-family:Microsoft YaHei;">欢迎${student.name}同学！</span>
+		<span style="position: absolute; top: 10px; left:20px;color:white;font-size:18px;font-family:Microsoft YaHei;">欢迎${user.name}同学！</span>
 		</div> 
 		<!-- head图片结束 -->
 

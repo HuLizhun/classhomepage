@@ -1,6 +1,7 @@
 <%@ page language="java" import="java.util.*"
 	contentType="text/html; charset=utf-8" isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="com.textile083.entity.*" %>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
@@ -116,7 +117,7 @@ td div {
 		<!-- head图片结束 -->
 		<div class="welcome">
 			<span
-				style="position: absolute; top: 10px; left: 20px; color: white; font-size: 18px; font-family: Microsoft YaHei;">欢迎${student.name}同学！</span>
+				style="position: absolute; top: 10px; left: 20px; color: white; font-size: 18px; font-family: Microsoft YaHei;">欢迎${user.name}同学！</span>
 
 			<!-- 搜索标签开始 -->
 			<div class="search" style="left: 80.5%;"></div>
@@ -134,11 +135,23 @@ td div {
 					<table>
 						<c:forEach items="${articleList}" var="article">
 							<tr>
-								<td><div>
+								<td style="width: 250px">
 										<a
 											href="<%=path %>/Textile083/queryArticleByTitle.action?title=${article.title}">${article.title}</a>
-									</div></td>
-								<td><div>${article.name}</div></td>
+									</td>
+								<td style="width:100px">${article.name}</td>
+								<% User user=(User)session.getAttribute("user");
+								List<Permission> permissonList=user.getPermissionList();
+								    for(Permission permission:permissonList){
+								    	String url=permission.getUrl();
+								    	boolean flag=url.equals("/Textile083/skip.action?name=delete");
+								    	if(flag){
+								 %>
+								  <td style="font-weight: normal;"><a href="<%=path %>/Textile083/deleteArticleById.action?id=${article.id}">删除</a></td>
+								<% 		
+								    	}
+								}
+								%>
 							</tr>
 						</c:forEach>
 					</table>

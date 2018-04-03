@@ -3,7 +3,6 @@ package com.textile083.controller;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -13,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.textile083.entity.Article;
 import com.textile083.entity.Student;
+import com.textile083.entity.User;
+import com.textile083.service.DeleteService;
 import com.textile083.service.QueryService;
 
 /**
@@ -25,6 +26,9 @@ public class ArticleController {
 
 	@Autowired
 	private QueryService queryService;
+	
+	@Autowired
+	private DeleteService deleteService;
 
 	@RequestMapping("/write.action")
 	public String queryAirticleByTitle(HttpServletRequest request) throws IOException {
@@ -34,9 +38,9 @@ public class ArticleController {
 		String content = request.getParameter("content");
 		//判断content中字符有换行符，如果有添加<br>
 		StringBuilder sb=queryService.findNextLine(content);
-		Student student = (Student) request.getSession().getAttribute("student");
-		String number = student.getNumber();
-		String name = student.getName();
+		User user = (User) request.getSession().getAttribute("user");
+		String number = user.getNumber();
+		String name = user.getName();
 		//新建Article对象，将学生信息和文章信息加入其中
 		Article article = new Article();
 		article.setNumber(number);
@@ -53,21 +57,20 @@ public class ArticleController {
 	@RequestMapping("/queryMyArtilce.action")
 	public String queryAirticleByNumber(HttpServletRequest request) throws UnsupportedEncodingException {
 		request.setCharacterEncoding("utf-8");
-		Student student = (Student) request.getSession().getAttribute("student");
-		String number = student.getNumber();
+		User user = (User) request.getSession().getAttribute("user");
+		String number = user.getNumber();
 		List<Article> myArticlce = queryService.queryArticleByNumber(number);
 		request.getSession().setAttribute("myArticlce", myArticlce);
 		return "myArticle";
 	}
-
-	public String queryArticleByPage(HttpServletRequest request) {
-		String title = request.getParameter("title");
-		String name = request.getParameter("name");
-		String currentPage = request.getParameter("currentPage");
-		Map<String, Object> param = queryService.queryArticleByPage(title, name, currentPage);
-		request.getSession().setAttribute("page", param.get("page"));
-		request.getSession().setAttribute("articleList", param.get("articleList"));
-		return "liberature";
+	
+	@RequestMapping("/deleteArticleById.action")
+	public String deleteArticleById(HttpServletRequest request) throws UnsupportedEncodingException{
+		request.setCharacterEncoding("utf-8");
+		String id=(String)request.getParameter("id");
+		System.out.println(id);
+		deleteService.deleteArticleById(id);
+		return "index";
 	}
 
 }

@@ -7,7 +7,7 @@
 	<!-- 映射类 -->
 	<resultMap type="com.textile083.entity.Article" id="ArticleResult">
 		<!-- id表示主键，column为列名忽略大小写，property为属性名 -->
-		<id column="student_id" jdbcType="INTEGER" property="id" />
+		<id column="id" jdbcType="INTEGER" property="id" />
 		<!-- result表示普通列 -->
 		<result column="student_number" jdbcType="VARCHAR" property="number" />
 		<result column="student_name" jdbcType="VARCHAR" property="name" />
@@ -18,7 +18,7 @@
 	<!-- 配置select语句，id="queryArticleByTitle"与IArticle的方法名一致，resultMap="ArticleResult"与上面的映射类的id一致，parameterType为方法返回值类型 -->
 	<select id="queryArticleByTitle" parameterType="java.lang.String"
 		resultMap="ArticleResult">
-		select student_id, student_number, student_name, article_title,
+		select id, student_number, student_name, article_title,
 		article_content from articles
 		<where>
 			<if test="_parameter != null and !&quot;&quot;.equals(_parameter.trim())">
@@ -29,7 +29,7 @@
 
 	<!-- 配置select语句，id="queryAllArticleList"与IArticle的方法名一致，resultMap="ArticleResult"与上面的映射类的id一致，parameterType为方法返回值类型 -->
 	<select id="queryAllArticleList" resultMap="ArticleResult">
-		select student_id,
+		select id,
 		student_number, student_name, article_title,
 		article_content from
 		articles
@@ -38,7 +38,7 @@
 	<!-- 根据学号查询article -->
 	<select id="queryArticleByNumber" parameterType="String"
 		resultMap="ArticleResult">
-		select student_id, student_number, student_name, article_title,
+		select id, student_number, student_name, article_title,
 		article_content from articles
 		<where>
 			<if test="_parameter != null and !&quot;&quot;.equals(_parameter.trim())">
@@ -51,7 +51,7 @@
 	<!-- 分页查询 -->
 	<select id="queryArticleByPage" parameterType="java.util.Map"
 		resultMap="ArticleResult">
-		select student_id, student_number, student_name,
+		select id, student_number, student_name,
 		article_title,
 		article_content from articles
 		limit
@@ -76,6 +76,15 @@
 		#{content}
 		)
 	</insert>
+	
+	
+	<!-- 配置delete语句 -->
+	<delete id="deleteArticleById" parameterType="Integer">
+	   delete from articles
+	   <where>
+	     id=#{id}
+	   </where>
+	</delete>
 
 
 </mapper>

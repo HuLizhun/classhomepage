@@ -4,7 +4,7 @@ create table students(
   student_number varchar(50),
   student_sex varchar(50),
   student_name varchar(50)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of students

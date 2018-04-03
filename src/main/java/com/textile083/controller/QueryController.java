@@ -43,7 +43,7 @@ public class QueryController {
 		String context = request.getParameter("context");
 		//如果用户点击退出按钮，返回登陆页面
 		if (searchService.doExit(exit)) {
-			request.getSession().setAttribute("student", null);
+			request.getSession().setAttribute("user", null);
 			return "login";
 		}
 		Article aritcle = searchService.doSearch(context);

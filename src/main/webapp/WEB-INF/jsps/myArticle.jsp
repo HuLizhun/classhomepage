@@ -117,7 +117,7 @@ td div {
 		<!-- head图片结束 -->
 		<div class="welcome">
 			<span
-				style="position: absolute; top: 10px; left: 20px; color: white; font-size: 18px; font-family: Microsoft YaHei;">欢迎${student.name}同学！</span>
+				style="position: absolute; top: 10px; left: 20px; color: white; font-size: 18px; font-family: Microsoft YaHei;">欢迎${user.name}同学！</span>
 
 			<!-- 搜索标签开始 -->
 			<div class="search" style="left: 80.5%;"></div>

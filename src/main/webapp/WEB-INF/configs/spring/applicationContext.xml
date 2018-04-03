@@ -39,7 +39,7 @@
 		<!-- mybatis配置文件路径 -->
 		<property name="configLocation" value=""></property>
 		<!-- 实体类映射文件路径，如果只有一个就写死，多个就写sqlxml/*.xml -->
-		<property name="mapperLocations" value="classpath:com/textile083/config/sqlxml/*.xml"></property>
+		<property name="mapperLocations" value="classpath:com/textile083/mapper/*.xml"></property>
 	</bean>
 
 	<!-- 动态代理实现，不用写dao的实现 -->

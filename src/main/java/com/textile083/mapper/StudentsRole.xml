@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- dao层的接口 -->
+<mapper namespace="com.textile083.dao.StudentsRoleMapper" >
+  <resultMap id="BaseResultMap" type="com.textile083.entity.StudentsRole" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="student_id" property="studentId" jdbcType="INTEGER" />
+    <result column="role_id" property="roleId" jdbcType="VARCHAR" />
+  </resultMap>
+</mapper>
