@@ -41,6 +41,7 @@ public class QueryController {
 		request.setCharacterEncoding("UTF-8");
 		String exit = request.getParameter("exit");
 		String context = request.getParameter("context");
+		System.out.println("退出".equals(exit.trim()));
 		//如果用户点击退出按钮，返回登陆页面
 		if (searchService.doExit(exit)) {
 			request.getSession().setAttribute("user", null);

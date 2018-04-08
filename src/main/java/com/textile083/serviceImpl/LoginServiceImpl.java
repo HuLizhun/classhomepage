@@ -17,6 +17,7 @@ import com.textile083.entity.Student;
 import com.textile083.exception.AssertException;
 import com.textile083.service.LoginService;
 import com.textile083.util.AssertUtil;
+import com.textile083.util.EncryptUtil;
 
 @Service("loginService")
 public class LoginServiceImpl implements LoginService{
@@ -71,6 +72,7 @@ public class LoginServiceImpl implements LoginService{
 		if(s==null){
 			throw new AssertException("我们班没有叫"+name+"的人！");
 		}
+		number=EncryptUtil.md5(number);
 		s.setNumber(AssertUtil.assertNotEquals("学生学号不对", number, s.getNumber()).toString());		
 		return s;
 	}
