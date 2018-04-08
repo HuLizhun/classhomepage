@@ -90,7 +90,7 @@ window.onload = function(){
 			<table width="500px" border="1px solid #000" cellspacing="0">
 			   <tr>
 			      <th>序列</th>
-			      <th>学号</th>
+			      <!-- <th>学号</th> -->
 			      <th>性别</th>
 			      <th>姓名</th>			      
 			   </tr>
@@ -98,7 +98,7 @@ window.onload = function(){
 			   	<c:forEach items="${studentList}" var="student" >
 			    	<tr>
 			          <td><div>${student.id}</div></td>
-			          <td><div>${student.number}</div></td>
+			          <%-- <td><div>${student.number}</div></td> --%>
 			          <td><div>${student.sex}</div></td>
 			          <td><div>${student.name}</div></td>			      
 			       </tr>		  

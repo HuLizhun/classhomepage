@@ -9,16 +9,17 @@
     <welcome-file>welcome.jsp</welcome-file>
   </welcome-file-list>
   <!-- Spring应用上下文， 理解层次化的ApplicationContext -->
+  <listener>
+		<listener-class>
+			com.textile083.listener.StudentsListListener
+		</listener-class>
+  </listener>
   <context-param>
  		<param-name>contextConfigLocation</param-name>
 		<param-value>/WEB-INF/configs/spring/applicationContext.xml</param-value>
   </context-param>
   
-  <listener>
-		<listener-class>
-			org.springframework.web.context.ContextLoaderListener
-		</listener-class>
-  </listener>
+
   
   <!-- 拦截器好像没起作用 -->
 <!--   <filter>

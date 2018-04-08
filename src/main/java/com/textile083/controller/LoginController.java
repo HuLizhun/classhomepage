@@ -68,18 +68,17 @@ public class LoginController {
 		try{
 			//验证用户登录信息
 			Student s = loginService.checkStudent(name, number);
-			List<Student> studentList = loginService.queryAllStudentList();
+			//List<Student> studentList = loginService.queryAllStudentList();
 			List<Article> articleList1 = loginService.queryAllArticleList().subList(0, 10);
 			User user=new User();
 			user.setName(s.getName());
 			user.setNumber(s.getNumber());
 			user.setPermissionList(permissionService.findPermissionListByStudentId(s.getId()));
-			request.getSession().setAttribute("studentList", studentList);
+			//request.getSession().setAttribute("studentList", studentList);
 			request.getSession().setAttribute("articleList1", articleList1);
 			request.getSession().setAttribute("user", user);
 			return "index";
 		}catch (AssertException e){
-			System.out.println(e.getMessage());
 			request.setAttribute("message", e.getMessage());
 			return "failure";
 		}
