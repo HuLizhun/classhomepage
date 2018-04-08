@@ -1,8 +1,10 @@
 drop table if exists students_role;
 create table students_role(
-  id varchar(50) primary key,
+  id varchar(32) primary key,
   student_id int,
-  role_id varchar(50)
+  role_id varchar(32),
+  foreign key(role_id) references role(id),
+  foreign key(student_id) references students(student_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------

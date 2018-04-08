@@ -1,8 +1,8 @@
 drop table if exists permission;
 create table permission(
   id int primary key,
-  name varchar(50),
-  url varchar(50)
+  name varchar(32),
+  url varchar(64)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------

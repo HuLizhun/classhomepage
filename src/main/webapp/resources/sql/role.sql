@@ -1,7 +1,7 @@
 drop table if exists role;
 create table role(
-  id varchar(50) primary key,
-  name varchar(50)
+  id varchar(32) primary key,
+  name varchar(32)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------

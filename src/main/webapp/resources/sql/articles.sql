@@ -1,10 +1,10 @@
 drop table if exists articles;
 create table articles(
   id int auto_increment primary key,
-  student_number varchar(50),
-  student_name varchar(50),
-  article_title varchar(50),
-  article_content TEXT(5000)
+  student_number varchar(32),
+  student_name varchar(32),
+  article_title varchar(32),
+  article_content TEXT
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
