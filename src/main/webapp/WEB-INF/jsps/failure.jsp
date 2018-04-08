@@ -55,9 +55,10 @@ window.onload = function(){
 		
 		<!-- 登陆表单开始 -->
 		<div class="form">
+		<span style="color: red;font-size:x-small; ">${message}</span>
             <form action="<%=path %>/Textile083/login.action" method="post">
 			   <label for="name">姓名：</label>
-			   <input type="text" name="name" id="name" /><span style="color: red;font-size:x-small; ">"${msg}"</span><br><br>
+			   <input type="text" name="name" id="name" /><br><br>
 			   <label for="number">学号：</label>
 			   <input type="text" name="number" id="number"/><br><br>
 			   <input type="checkbox" name="msg" id="message" checked="checked"/>

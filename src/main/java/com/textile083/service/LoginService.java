@@ -7,6 +7,7 @@ import javax.servlet.http.Cookie;
 
 import com.textile083.entity.Article;
 import com.textile083.entity.Student;
+import com.textile083.exception.AssertException;
 
 public interface LoginService {
 
@@ -16,7 +17,7 @@ public interface LoginService {
 	
 	public String[] doLogin(Cookie[] cookies) throws UnsupportedEncodingException;
 	
-	public Student checkStudent(String name, String number);
+	public Student checkStudent(String name, String number) throws Exception;
 	
 	public Cookie[] checkMsg(String name, String number, String[] msg, Cookie[] cookies1)
 			throws UnsupportedEncodingException;

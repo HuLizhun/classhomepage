@@ -14,4 +14,17 @@ public interface StudentDAO {
 	 * @return
 	 */
 	public List<Student> queryAllStudentList();
+	
+	/**
+	 * 根据学号查找学生
+	 * @param number
+	 * @return
+	 */
+	public Student queryStudentByNumber(String number);
+	/**
+	 * 根据姓名查找学生
+	 * @param name
+	 * @return
+	 */
+	public Student queryStudentByName(String name);
 }

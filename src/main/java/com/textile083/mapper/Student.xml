@@ -17,5 +17,15 @@
 	<select id="queryAllStudentList" resultMap="StudentResult">
 		select student_id, student_number, student_sex, student_name from STUDENTS
 	</select>
+	
+	<!-- 配置select语句，根据student_name查询 -->
+	<select id="queryStudentByName" parameterType="String" resultMap="StudentResult">
+		select student_id, student_number, student_sex, student_name from STUDENTS where student_name=#{name}
+	</select>
+	
+	<!-- 配置select语句，根据student_number查询 -->
+	<select id="queryStudentByNumber" parameterType="String" resultMap="StudentResult">
+		select student_id, student_number, student_sex, student_name from STUDENTS where student_number=#{number}
+	</select>
 
 </mapper>

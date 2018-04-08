@@ -1,12 +1,10 @@
 package com.textile083.controller;
 
-import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.textile083.entity.Article;
 import com.textile083.entity.Student;
 import com.textile083.entity.User;
+import com.textile083.exception.AssertException;
 import com.textile083.service.LoginService;
 import com.textile083.service.PermissionService;
 
@@ -33,7 +32,7 @@ public class LoginController {
 	private PermissionService permissionService;
 
 	@RequestMapping("/doLogin.action")
-	public String doLogin(HttpServletRequest request) throws UnsupportedEncodingException {
+	public String doLogin(HttpServletRequest request) throws Exception {
 		request.setCharacterEncoding("utf-8");
 		//获取Cookies中的姓名和学号缓存
 		String[] str = loginService.doLogin(request.getCookies());
@@ -43,8 +42,12 @@ public class LoginController {
 	}
 
 	@RequestMapping("/login.action")
-	public String login(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException {
+	public String login(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		request.setCharacterEncoding("utf-8");
+		User u=(User) request.getSession().getAttribute("user");
+		if(u!=null){
+			return "index";
+		}
 		String[] msg = request.getParameterValues("msg");
 		String name = (String) request.getParameter("name");
 		String number = (String) request.getParameter("number");
@@ -55,16 +58,19 @@ public class LoginController {
 			response.addCookie(cookies2[0]);
 			response.addCookie(cookies2[1]);
 		} else {
-			for (Cookie c : cookies1) {
-				response.addCookie(c);// 重新保存
+			if(cookies1!=null){
+				for (Cookie c : cookies1) {
+					response.addCookie(c);// 重新保存
+				}
 			}
+			
 		}
-		// 验证用户登录信息，如果已经登陆不再验证
-		Student s = loginService.checkStudent(name, number);
-		if (s != null) {
+		try{
+			//验证用户登录信息
+			Student s = loginService.checkStudent(name, number);
 			List<Student> studentList = loginService.queryAllStudentList();
 			List<Article> articleList1 = loginService.queryAllArticleList().subList(0, 10);
-			User user=new  User();
+			User user=new User();
 			user.setName(s.getName());
 			user.setNumber(s.getNumber());
 			user.setPermissionList(permissionService.findPermissionListByStudentId(s.getId()));
@@ -72,9 +78,10 @@ public class LoginController {
 			request.getSession().setAttribute("articleList1", articleList1);
 			request.getSession().setAttribute("user", user);
 			return "index";
-		} else {
-			request.getSession().setAttribute("msg", "输入的学号或姓名不对！");
+		}catch (AssertException e){
+			request.setAttribute("message", e.getMessage());
 			return "failure";
 		}
+
 	}
 }

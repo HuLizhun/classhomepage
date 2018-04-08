@@ -40,9 +40,11 @@ public class QueryController {
 	public String search(HttpServletRequest request) throws UnsupportedEncodingException {
 		request.setCharacterEncoding("UTF-8");
 		String exit = request.getParameter("exit");
+		System.out.println(exit+" "+searchService.doExit(exit));
 		String context = request.getParameter("context");
 		//如果用户点击退出按钮，返回登陆页面
 		if (searchService.doExit(exit)) {
+			System.out.println("进入exit");
 			request.getSession().setAttribute("user", null);
 			return "login";
 		}

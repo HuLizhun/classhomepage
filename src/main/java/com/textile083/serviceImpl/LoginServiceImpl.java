@@ -14,7 +14,9 @@ import com.textile083.dao.ArticleDAO;
 import com.textile083.dao.StudentDAO;
 import com.textile083.entity.Article;
 import com.textile083.entity.Student;
+import com.textile083.exception.AssertException;
 import com.textile083.service.LoginService;
+import com.textile083.util.AssertUtil;
 
 @Service("loginService")
 public class LoginServiceImpl implements LoginService{
@@ -61,19 +63,16 @@ public class LoginServiceImpl implements LoginService{
 	/**
 	 * 验证students数据表中是否name和number
 	 */
-	public Student checkStudent(String name, String number) {
-			// 查询数据库中所有student的信息
-			List<Student> studentList = queryAllStudentList();
-			if (studentList != null && studentList.size() > 0) {
-				for (int i = 0; i < studentList.size(); i++) {
-					if (name.equals(studentList.get(i).getName()) && number.equals(studentList.get(i).getNumber())) {
-						Student s = studentList.get(i);
-						return s;
-					
-				}
-			}
+	public Student checkStudent(String name, String number) throws Exception{
+		//验证name和number不为空
+		AssertUtil.assertNotBlank("学生名字不能为空", name);
+		AssertUtil.assertNotBlank("学生学号不能为空", number);
+		Student s=studentDAO.queryStudentByName(name);
+		if(s==null){
+			throw new AssertException("我们班没有叫"+name+"的人！");
 		}
-		return null;
+		s.setNumber(AssertUtil.assertNotEquals("学生学号不对", number, s.getNumber()).toString());		
+		return s;
 	}
 
 	/**
