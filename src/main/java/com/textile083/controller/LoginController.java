@@ -79,6 +79,7 @@ public class LoginController {
 			request.getSession().setAttribute("user", user);
 			return "index";
 		}catch (AssertException e){
+			System.out.println(e.getMessage());
 			request.setAttribute("message", e.getMessage());
 			return "failure";
 		}
