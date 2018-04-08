@@ -13,7 +13,7 @@ public class SearchServiceImpl implements SearchService {
 	private ArticleDAO articleDao;
 
 	public boolean doExit(String exit) {
-		if (exit != null && (exit.trim()).equals("退出")) {
+		if (exit != null && "退出".equals(exit.trim())) {
 			return true;
 		}
 		return false;
