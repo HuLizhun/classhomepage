@@ -1,7 +1,5 @@
 package com.textile083.controller;
 
-import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,15 +20,10 @@ public class PagingController {
 	private QueryService queryService;
 
 	@RequestMapping("/liberature.action")
-	public String queryArticleByPage(HttpServletRequest request) {
-		String title = request.getParameter("title");
-		String name = request.getParameter("name");
-		//获取当前页
-		String currentPage = request.getParameter("currentPage");
-		//将标题，姓名和当前页信息传给service
-		Map<String, Object> param = queryService.queryArticleByPage(title, name, currentPage);
-		request.getSession().setAttribute("page", param.get("page"));
-		request.getSession().setAttribute("articleList", param.get("articleList"));
+	public String queryArticleByPage(HttpServletRequest request) throws Exception {
+		request.setCharacterEncoding("UTF-8");
+		//分页查询
+		queryService.queryArticleByPage(request);
 		return "liberature";
 	}
 

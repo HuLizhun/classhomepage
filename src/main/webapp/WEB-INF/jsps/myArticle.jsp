@@ -12,7 +12,7 @@
 <head>
 <base href="<%=basePath%>">
 
-<title>班级文学</title>
+<title>我的文章</title>
 
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">
@@ -26,7 +26,6 @@
 td div {
 	height: 28px;
 	font-size: 12px;
-	width: 400px;
 }
 
 .fix {
@@ -127,17 +126,25 @@ td div {
 			<div class="class_liberature">
 				<h1> 我的文章</h1>
 				<a href="<%=path%>/Textile083/skip.action?name=write"
-					target="_blank" title="点击进入班级文学"> <input type="submit"
+					target="_blank"> <input type="submit"
 					value="写文章" /></a>
-				<div>
-					<table>
-						<c:forEach items="${myArticlce}" var="article">
+				<div><br>
+					<table border="1px solid #000" cellspacing="0" style="text-align: center;">
+						    <tr>
+						       <th>序列</th> 
+			                   <th style="width: 300px;">标题</th> 
+			                   <th style="width: 50px;">作者</th>
+			                   <th style="width: 50px;">操作</th>
+			                </tr>
+						<c:forEach items="${myArticlce}" var="article" varStatus="status">
 							<tr>
-								<td><div>
+							    <td>${status.count}</td>
+								<td style="text-align:left;"><div>
 										<a
 											href="<%=path %>/Textile083/queryArticleByTitle.action?title=${article.title}">${article.title}</a>
 									</div></td>
 								<td><div>${article.name}</div></td>
+								<td><a href="<%=path %>/Textile083/queryArticleByTitle.action?title=${article.title}">查看</a></td>
 							</tr>
 						</c:forEach>
 					</table>

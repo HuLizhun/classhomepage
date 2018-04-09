@@ -137,16 +137,12 @@ td div {
 			      <th>序列</th>
 			      <th style="width: 250px">标题</th> 
 			      <th style="width:100px">作者</th>
-			      <c:forEach items="${permissionList}" var="permission">
-						<c:if test="${permission.url=='/Textile083/skip.action?name=delete'}">
-								<th>操作</th>         
-						</c:if>
-				  </c:forEach>  
+			      <th>操作</th>			      
 			   </tr>
 						<c:forEach items="${articleList}" var="article" varStatus="status">
 							<tr>
 							<td style="position: ">
-										${status.count+(page.currentPage-1)*5}
+										${status.count}
 									</td>
 								<td style="text-align: left;">
 										<a
@@ -162,23 +158,6 @@ td div {
 						</c:forEach>
 					</table>
 				</div>
-							<div class='page fix'>
-				共 <b>${page.totalNumber}</b> 条
-				<c:if test="${page.currentPage !=1 }">
-					<a href="<%=path %>/Textile083/liberature.action?currentPage=1" class='first'>首页</a>
-					<a href="<%=path %>/Textile083/liberature.action?currentPage=${page.currentPage-1}"
-						class='pre'>上一页</a>
-				</c:if>
-				当前第<span>${page.currentPage}/${page.totalPage}</span>页
-				<c:if test="${page.currentPage!=page.totalPage}">
-					<a href="<%=path %>/Textile083/liberature.action?currentPage=${page.currentPage+1}"
-						class='next'>下一页</a>
-					<a href="<%=path %>/Textile083/liberature.action?currentPage=${page.totalPage}"
-						class='last'>末页</a>
-				</c:if>
-				跳至&nbsp;<input id="currentPageText" type='text' value='${page.currentPage}' style="width:40px" />&nbsp;页&nbsp;
-							<a href=""  id="go">GO</a>
-			</div>
 			</div>
 
 

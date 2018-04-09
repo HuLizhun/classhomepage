@@ -1,11 +1,11 @@
 package com.textile083.service;
 
 import java.util.List;
-import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
 
 import com.textile083.entity.Article;
 import com.textile083.entity.Student;
-
 
 public interface QueryService {
 
@@ -13,13 +13,13 @@ public interface QueryService {
 	
 	public List<Article> queryAllArticleList();
 	
-	public Article queryArticleByTitle(String title);
+	public void queryArticleByTitle(HttpServletRequest request);
 	
-	public List<Article> queryArticleByNumber(String number);
+	public void queryArticleByNumber(HttpServletRequest request)throws Exception;
 	
-	public Map<String, Object> queryArticleByPage(String title, String name, String currentPage);
+	public void queryArticleByPage(HttpServletRequest request);
 	
-	public StringBuilder findNextLine(String content);
+	public Article findNextLine(HttpServletRequest request) throws Exception;
 	
 	public void addArticle(Article article);
 }

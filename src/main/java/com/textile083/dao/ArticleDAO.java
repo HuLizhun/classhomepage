@@ -23,6 +23,8 @@ public interface ArticleDAO {
 	 * @return
 	 */
 	public Article queryArticleByTitle(String title);
+	
+	public List<Article> queryArticleListByTitle(String title);
 
 	/**
 	 * 向数据库添加article

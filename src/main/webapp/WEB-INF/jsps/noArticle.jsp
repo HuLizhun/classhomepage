@@ -1,7 +1,6 @@
 <%@ page language="java" import="java.util.*"
 	contentType="text/html; charset=utf-8" isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page import="com.textile083.entity.*" %>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
@@ -13,7 +12,7 @@
 <head>
 <base href="<%=basePath%>">
 
-<title>班级文学</title>
+<title>我的文章</title>
 
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">
@@ -27,7 +26,6 @@
 td div {
 	height: 28px;
 	font-size: 12px;
-	width: 400px;
 }
 
 .fix {
@@ -79,6 +77,7 @@ td div {
 <script type="text/javascript"
 	src="<%=path%>/resources/js/jquery-1.8.0.min.js"></script>
 <script type="text/javascript" src="<%=path%>/resources/js/homepage.js"></script>
+<script type="text/javascript" src="<%=path%>/resources/js/paging.js"></script>
 <script type="text/javascript">
 	window.onload = function() {
 		var head = getHead; //引用getHead函数
@@ -125,60 +124,11 @@ td div {
 
 			<!-- introduce -->
 			<div class="class_liberature">
-				<h1>班级文学</h1>
+				<h1> 我的文章</h1>
 				<a href="<%=path%>/Textile083/skip.action?name=write"
 					target="_blank" title="点击进入班级文学"> <input type="submit"
-					value="写文章" /></a> <a
-					href="<%=path%>/Textile083/queryMyArtilce.action" target="_blank"
-					title="点击进入班级文学"> <input type="submit" value="我的文章" /></a>
-				<div><br>
-					<table border="1px solid #000" cellspacing="0" style="text-align: center;">
-								   <tr>
-			      <th>序列</th>
-			      <th style="width: 250px">标题</th> 
-			      <th style="width:100px">作者</th>
-			      <c:forEach items="${permissionList}" var="permission">
-						<c:if test="${permission.url=='/Textile083/skip.action?name=delete'}">
-								<th>操作</th>         
-						</c:if>
-				  </c:forEach>  
-			   </tr>
-						<c:forEach items="${articleList}" var="article" varStatus="status">
-							<tr>
-							<td style="position: ">
-										${status.count+(page.currentPage-1)*5}
-									</td>
-								<td style="text-align: left;">
-										<a
-											href="<%=path %>/Textile083/queryArticleByTitle.action?title=${article.title}">${article.title}</a>
-									</td>
-								<td>${article.name}</td>
-								<c:forEach items="${permissionList}" var="permission">
-								   <c:if test="${permission.url=='/Textile083/skip.action?name=delete'}">
-								         <td><a href="<%=path %>/Textile083/deleteArticleById.action?id=${article.id}" onclick="confirm('确认删除吗？')" >删除</a></td>
-								   </c:if>
-								</c:forEach>
-							</tr>
-						</c:forEach>
-					</table>
-				</div>
-							<div class='page fix'>
-				共 <b>${page.totalNumber}</b> 条
-				<c:if test="${page.currentPage !=1 }">
-					<a href="<%=path %>/Textile083/liberature.action?currentPage=1" class='first'>首页</a>
-					<a href="<%=path %>/Textile083/liberature.action?currentPage=${page.currentPage-1}"
-						class='pre'>上一页</a>
-				</c:if>
-				当前第<span>${page.currentPage}/${page.totalPage}</span>页
-				<c:if test="${page.currentPage!=page.totalPage}">
-					<a href="<%=path %>/Textile083/liberature.action?currentPage=${page.currentPage+1}"
-						class='next'>下一页</a>
-					<a href="<%=path %>/Textile083/liberature.action?currentPage=${page.totalPage}"
-						class='last'>末页</a>
-				</c:if>
-				跳至&nbsp;<input id="currentPageText" type='text' value='${page.currentPage}' style="width:40px" />&nbsp;页&nbsp;
-							<a href=""  id="go">GO</a>
-			</div>
+					value="写文章" /></a><br><br>
+				<span style="color: red; ">${message}</span>
 			</div>
 
 

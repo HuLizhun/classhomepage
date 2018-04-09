@@ -1,13 +1,12 @@
 package com.textile083.service;
 
-import java.io.UnsupportedEncodingException;
 import java.util.List;
 
-import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import com.textile083.entity.Article;
 import com.textile083.entity.Student;
-import com.textile083.exception.AssertException;
 
 public interface LoginService {
 
@@ -15,10 +14,9 @@ public interface LoginService {
 	
 	public List<Student> queryAllStudentList();
 	
-	public String[] doLogin(Cookie[] cookies) throws UnsupportedEncodingException;
+	public void doLogin(HttpServletRequest request) throws Exception;
 	
-	public Student checkStudent(String name, String number) throws Exception;
+	public void checkStudent(HttpServletRequest request) throws Exception;
 	
-	public Cookie[] checkMsg(String name, String number, String[] msg, Cookie[] cookies1)
-			throws UnsupportedEncodingException;
+	public boolean checkMsg(HttpServletRequest request, HttpServletResponse response) throws Exception;
 }

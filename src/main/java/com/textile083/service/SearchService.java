@@ -1,11 +1,9 @@
 package com.textile083.service;
 
-import com.textile083.entity.Article;
+import javax.servlet.http.HttpServletRequest;
 
 
 public interface SearchService {
-
-	public Article doSearch(String context);
 	
-	public boolean doExit(String exit);
+	public String checkParameter(HttpServletRequest request) throws Exception;
 }

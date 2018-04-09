@@ -72,7 +72,7 @@ window.onload = function(){
 
 		<!-- introduce -->
 		<div class="article">
-			<h2>对不起，没有查到“${context}”这篇文章！</h2>
+			<h2>${context}</h2>
 
 		</div>
 		<!-- 左边导航栏开始 -->

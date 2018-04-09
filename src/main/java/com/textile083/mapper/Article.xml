@@ -22,7 +22,19 @@
 		article_content from articles
 		<where>
 			<if test="_parameter != null and !&quot;&quot;.equals(_parameter.trim())">
-				article_title=#{_parameter}
+				article_title=#{title}
+			</if>
+		</where>
+	</select>
+	
+	<!-- 配置select语句，id="queryArticleByTitle"与IArticle的方法名一致，resultMap="ArticleResult"与上面的映射类的id一致，parameterType为方法返回值类型 -->
+	<select id="queryArticleListByTitle" parameterType="java.lang.String"
+		resultMap="ArticleResult">
+		select id, student_number, student_name, article_title,
+		article_content from articles
+		<where>
+			<if test="_parameter != null and !&quot;&quot;.equals(_parameter.trim())">
+				article_title like '%' #{title} '%'
 			</if>
 		</where>
 	</select>
@@ -42,7 +54,7 @@
 		article_content from articles
 		<where>
 			<if test="_parameter != null and !&quot;&quot;.equals(_parameter.trim())">
-				student_number=#{_parameter}
+				student_number=#{number}
 			</if> 
 		</where>
 

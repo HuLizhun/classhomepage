@@ -59,7 +59,7 @@ window.onload = function(){
 	%>
 	<!--主页开始  -->
 	<div class="homepage">
-		<img src="<%=path %>/resources/images/background2.jpg" height="99%" width="100%" />
+		<img src="<%=path %>/resources/images/background2.jpg" height="100%" width="100%" />
 		<!-- head图片开始 -->
 		<div class="head">
 		</div>
@@ -68,12 +68,13 @@ window.onload = function(){
 		<span style="position: absolute; top: 10px; left:20px;color:white;font-size:18px;font-family:Microsoft YaHei;">欢迎${user.name}同学！</span>
 		</div> 
 		<!-- 搜索标签开始 -->
-		<div class="search" style="left: 1080px;">
+		<div class="search" style="left: 80.5%;">
 		</div>
 		<!-- 搜索标签结束 -->
 
 		<!-- 输入文档 -->
 		<div class="textarea">
+		<span style="color: red;font-size:x-small; ">${message}</span><br>
 			<form method="get" action="<%=path %>/Textile083/write.action">
 				<label for="subject">标题：</label>
 				<input type="text" name="subject" style="width:400px" /><br><br>
